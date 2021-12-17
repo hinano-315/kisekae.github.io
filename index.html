@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3A09OkaHinano</title>
+    <!-- Webfont -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+    <style>
+        body{
+        line-height: 1.7;
+        font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+        color:#5C4F2C;
+         }
+
+         /* ↓人物の写真に服の写真を重ねるコード(#woman imgと#tops img、bottoms imgのCSS)をウェブサイトから参照 */
+         /* リンク：https://www.dctweb.jp/20160224k/ */
+        #woman img{
+            position: relative; 
+            height: 500px;
+            margin-top: 50px;
+        }
+
+        #tops img{
+            position: absolute;
+            left: 35px;
+            top: 190px;
+            width: 220px;
+        }
+
+        #bottoms img{
+            position: absolute;
+            left: 70px;
+            top: 300px;
+            width: 150px;
+        }
+
+        .flex{
+            display: flex;
+        }
+
+        .flex img{
+            width: 150px;
+        }
+
+        .flex2{
+            display: flex;
+        }
+
+        .flex3{
+            display: flex;
+        }
+
+        .goukei{
+            margin-top: 50px;
+            margin-left: 30%;
+            margin-right: 30%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button{
+            color:#5C4F2C;
+            padding: 20px 60px;
+            background-color: burlywood;
+            border: none;
+        }
+
+        .footer{
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 200px;
+        }
+    </style>
+    </head>
+    <body>
+
+        <div class="flex3"> <!--全体のflex-->
+    <span><!--女性の画像を囲むタグ-->
+    
+        <div id="woman">
+            <img :src="url">
+        </div>
+        
+        <div id="bottoms">
+            <img :src="url3">
+        </div>
+
+        <div id="tops">
+            <img :src="url2">
+        </div>
+    
+</span><!--女性の画像を囲むタグ-->
+
+    <span><!--着せ替えの服を囲むタグ-->
+        <h3>服をクリックすると女性の服が切り替わります。</h3>
+       
+        <h2>tops</h2><br>
+        <div class="flex">
+            <img src="image/knit.png" @click=tops01()>
+            <img src="image/yellow-jacket.png" @click=tops02()>
+            <img src="image/cardigan.png" @click=tops03()>
+            <img src="image/cami.png" @click=tops04()>
+            <img src="image/tunic.png" @click=tops05()>
+        </div>
+
+        <h2>bottoms</h2><br>
+        <div class="flex">
+        <img src="image/blue-skirt.png" @click=bottoms01()>
+        <img src="image/green-skirt.png" @click=bottoms02()>
+        <img src="image/white-pants.png" @click=bottoms03()>
+        </div>
+
+    </span><!--着せ替えの服を囲むタグ-->
+</div><!--全体のflex-->
+
+<div class="goukei"><!-- 合計金額と購入ボタンを囲むタグ -->
+    <span>
+    <p>現在あなたは</p>
+    <h3>{{tops}}({{nedan1}}円)と</h3>
+    <h3>{{bottoms}}({{nedan2}}円)</h3>
+    <p>を選択しています</p>
+</span>
+<span>
+    <br><br>
+    <h3>合計金額は{{goukei}}円です</h3>
+    <button @click=buy()>購入する</button>
+    
+</span>
+</div><!-- 合計金額と購入ボタンを囲むタグ -->
+
+        <script src="https://unpkg.com/petite-vue"></script>
+    <script src="script.js"></script>
+
+     <!-- Footer -->
+     <footer>
+        <div class="footer">
+        <p><small>&copy; 2021 3A09OkaHinano</small></p>
+        </div>
+    </footer>
+    
+    </body>
+</html>
