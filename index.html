@@ -7,6 +7,8 @@
     <!-- Webfont -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
     <style>
+        [v-cloak]{display: none;}
+
         body{
         line-height: 1.7;
         font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
@@ -24,14 +26,14 @@
         #tops img{
             position: absolute;
             left: 35px;
-            top: 190px;
+            top: 350px;
             width: 220px;
         }
 
         #bottoms img{
             position: absolute;
             left: 70px;
-            top: 300px;
+            top: 460px;
             width: 150px;
         }
 
@@ -71,10 +73,57 @@
             font-size: 1.2rem;
             margin-top: 200px;
         }
+
+        .change-button{
+          margin-left:40%;
+          margin-top:5%;
+          margin-bottom: 3%;
+          background-color:#5C4F2C;
+          color: linen;
+        }
+
+        table{
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th,td{
+            border:solid;
+            background-color:linen;
+        }
+
+        .center{
+            text-align: center;
+        }
+
+        .sentaku{
+            width:100px;
+            padding:10px 0;
+        }
+
+        .base{
+            width: 170px;
+            font-size: 1.2rem;
+        }
+
+        .big{
+            width:270px;
+            height: 50px;
+            font-size: 1.5rem;
+        }
+
+        .small{
+            width:120px;
+            font-size: 1rem;
+        }
+
     </style>
     </head>
-    <body>
+    <body v-cloak>
 
+      <button @click="show=!show" class="change-button">ページ切り替え</button>
+      <template v-if=show>
         <div class="flex3"> <!--全体のflex-->
     <span><!--女性の画像を囲むタグ-->
     
@@ -128,8 +177,45 @@
     
 </span>
 </div><!-- 合計金額と購入ボタンを囲むタグ -->
+</template>
 
-        <script src="https://unpkg.com/petite-vue"></script>
+
+
+<!---------------------------------- ↓↓↓ ここから最終課題 ↓↓↓ ---------------------------------->
+
+<template v-else>
+  <div class="center">
+      <h1>商品の価格表</h1>
+      <p>・下記のフォームに値段を入力すると、それより安い服が表示されます。</p>
+
+  <!-- ↓　値段で表を絞り込む　↓ -->
+  <input v-model="value" placeholder="値段">円以下の洋服を表示
+  <!-- <button @click="sentaku" class="sentaku">選択</button> -->
+  <br><br>
+</div>
+
+<!-- ↓　値段票を表示　↓ -->
+<table>
+  <tr>
+    <th class="base" :class="tableClass">服の名前</th><th class="base" :class="tableClass">カテゴリー</th><th class="base" :class="tableClass">値段</th>
+  </tr>
+  <tr v-for="cl in selectclothes" :key="clothes">
+    <td class="base" :class="tableClass">{{cl.name}}</td>
+    <td class="base" :class="tableClass">{{cl.type}}</td>
+    <td class="base" :class="tableClass">{{cl.price}}</td>
+  </tr>
+</table>
+
+<br>
+<div class="center">
+<button @click="change1">大</button>
+<button @click="change2">ノーマル</button>
+<button @click="change3">小</button>
+</div>
+
+</template>
+
+　　<script src="https://unpkg.com/petite-vue"></script>
     <script src="script.js"></script>
 
      <!-- Footer -->
