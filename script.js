@@ -69,6 +69,53 @@ PetiteVue.createApp({
         //別ページに飛ぶプロパティをウェブサイトで参照
         //リンク：https://techacademy.jp/magazine/36488
         window.location="kaikei.html";
-    }
+    },
+
+    //↑↑↑　ここまで中間課題　↑↑↑
+
+
+    //---------------------------------- ↓↓↓ ここから最終課題 ↓↓↓ ----------------------------------
+
+    //切り替え
+    show:true,
+
+    value:10000,
+    fil:10000,
     
+    tableClass:'base',
+
+    //服の情報
+    clothes:[
+        {name:'白いニット',type:'トップス', price:6600},
+        {name:'黄色のジャケット',type:'トップス', price:7200},
+        {name:'ライラックのカーディガン',type:'トップス', price:5300},
+        {name:'ピンクのキャミソール',type:'トップス', price:4200},
+        {name:'チュニック',type:'トップス', price:4900},
+        {name:'デニムのスカート',type:'ボトムス', price:5500},
+        {name:'緑のスカート',type:'ボトムス', price:4400},
+        {name:'白のパンツ',type:'ボトムス', price:3500}
+    ],
+
+    //ボタンで切り替えようと思ったが無理だった
+    // sentaku(){
+    //     this.fil = parseInt(this.value);
+    // },
+
+    get selectclothes() {
+        return this.clothes.filter(
+          (cl) => cl.price <= this.value  //this.fil
+        );
+      },
+    
+    change1(){
+        this.tableClass = 'big'
+    },
+
+    change2(){
+        this.tableClass = 'base'
+    },
+
+    change3(){
+        this.tableClass = 'small'
+    }
 }).mount();
